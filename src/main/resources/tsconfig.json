@@ -1,0 +1,29 @@
+{
+  "include": [
+    "./**/*.ts",
+    "../../../.xp-codegen/**/*.d.ts"
+  ],
+  "exclude": [
+    "**/*.d.ts",
+    "**/*.stories.ts",
+    "assets/**/*.*",
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "rootDirs": [
+      ".",
+      "../../../.xp-codegen",
+    ],
+    "paths": {
+      "/lib/tineikt/freemarker": ["../../../node_modules/@item-enonic-types/lib-freemarker"],
+      "/lib/xp/*": ["../../../node_modules/@enonic-types/lib-*"],
+      "/lib/*": ["../../../src/main/resources/lib/*", "../../../node_modules/@item-enonic-types/lib-*"],
+      "/*": ["../../../src/main/resources/*","../../../.xp-codegen/*", "../../../node_modules/@item-enonic-types/lib-blocks/dist/*"]
+    },
+    "lib": ["ES5"],
+    "skipLibCheck": true,
+    "types": [
+      "@enonic-types/global",
+    ]
+  },
+}

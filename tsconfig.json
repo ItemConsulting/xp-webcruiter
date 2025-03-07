@@ -1,0 +1,21 @@
+{
+  "include": [
+    "tsup.config.ts",
+    "tsup/**/*.ts",
+    "src/**/*.stories.ts"
+  ],
+  "exclude": [
+    "**/*.d.ts",
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "lib": [
+      "dom",
+      "es2023" // string.replaceAll
+    ],
+    "types": [
+      "node",
+      "@itemconsulting/xp-storybook-utils/global"
+    ],
+  },
+}
