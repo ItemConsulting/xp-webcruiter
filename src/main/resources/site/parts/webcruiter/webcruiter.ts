@@ -3,19 +3,24 @@ import { getJobPostings, type JobPosting } from "/lib/webcruiter/service";
 import { render } from "/lib/tineikt/freemarker";
 import { LocalDate } from "/lib/time";
 import { assertIsDefined, partPathToId } from "/lib/webcruiter/utils";
-import type { Response, PartComponent } from "@enonic-types/core";
-import { FreemarkerParams, SimpleJobPosting } from "/site/parts/webcruiter/webcruiter.freemarker";
+import type { Request, Response, PartComponent } from "@enonic-types/core";
+import type { FreemarkerParams, SimpleJobPosting } from "/site/parts/webcruiter/webcruiter.freemarker";
 
 type JobPostingsListPart = PartComponent<"no.item.webcruiter:webcruiter">;
 
 const view = resolve("webcruiter.ftl");
 
-export function get(): Response {
+export function get(req: Request): Response {
   const content = getContent();
   const part = getComponent<JobPostingsListPart>();
 
   assertIsDefined(part);
-  assertIsDefined(part.config.companyId);
+
+  if (!part.config.companyId) {
+    return {
+      body: req.mode === "live" ? "" : "<div>Vennligst oppgi Firma-id</div>",
+    };
+  }
 
   const locale = content?.language ?? "no";
 
