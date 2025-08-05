@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<part xmlns="urn:enonic:xp:model:1.0">
+  <display-name i18n="webcruiter.displayName">Webcruiter job postings</display-name>
+  <description i18n="webcruiter.description">List of job postings from Webcruiter</description>
+
+  <form>
+    <input name="title" type="TextLine">
+      <label i18n="common.title">Title</label>
+      <occurrences minimum="0" maximum="1"/>
+    </input>
+
+    <input name="companyId" type="TextLine">
+      <label i18n="webcruiter.companyId">Company id</label>
+      <occurrences minimum="1" maximum="1"/>
+    </input>
+  </form>
+</part>
